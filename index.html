@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maharet — Yeteneklerin Vitrini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#12121a;
+    --surface:#1b1b28;
+    --surface-2:#232233;
+    --text:#ededf5;
+    --muted:#8d8ba3;
+    --accent:#43d9ad;
+    --accent-2:#f5c563;
+    --line:#2d2c3e;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+
+  header{
+    padding:28px 0;
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{display:flex; justify-content:space-between; align-items:center;}
+  .brand{font-family:'Fraunces', serif; font-size:1.1rem; font-weight:600;}
+  nav ul{list-style:none; display:flex; gap:28px;}
+  nav a{text-decoration:none; color:var(--muted); font-size:0.92rem; transition:color .2s;}
+  nav a:hover{color:var(--text);}
+
+  .hero{
+    padding:110px 0 90px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero .eyebrow{
+    color:var(--accent);
+    font-size:0.95rem;
+    margin-bottom:22px;
+    max-width:520px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1.08;
+    max-width:780px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--accent);
+  }
+  .hero p{
+    margin-top:26px;
+    max-width:540px;
+    color:var(--muted);
+    font-size:1.08rem;
+  }
+  .hero-stats{
+    display:flex;
+    gap:56px;
+    margin-top:56px;
+    flex-wrap:wrap;
+  }
+  .hero-stats div strong{
+    font-family:'Fraunces', serif;
+    font-size:2rem;
+    display:block;
+    color:var(--text);
+  }
+  .hero-stats div span{
+    color:var(--muted);
+    font-size:0.88rem;
+  }
+
+  .skills{
+    padding:90px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .skills h2{
+    font-size:2rem;
+    max-width:520px;
+    margin-bottom:12px;
+  }
+  .skills > .wrap > p{
+    color:var(--muted);
+    max-width:520px;
+    margin-bottom:56px;
+  }
+  .skill-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .skill{
+    background:var(--bg);
+    padding:34px 28px;
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .skill h3{
+    font-size:1.2rem;
+    font-weight:500;
+    margin-bottom:12px;
+  }
+  .skill p{
+    color:var(--muted);
+    font-size:0.94rem;
+  }
+  .skill .mark{
+    color:var(--accent-2);
+    font-size:0.82rem;
+    letter-spacing:0.02em;
+  }
+
+  .process{
+    padding:90px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .process h2{font-size:2rem; max-width:520px; margin-bottom:56px;}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:28px;
+  }
+  .step{
+    border-top:2px solid var(--accent);
+    padding-top:18px;
+  }
+  .step h3{font-size:1.02rem; font-weight:500; margin-bottom:10px;}
+  .step p{color:var(--muted); font-size:0.9rem;}
+
+  .cta{
+    padding:110px 0;
+    text-align:center;
+  }
+  .cta h2{
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    max-width:620px;
+    margin:0 auto 24px;
+  }
+  .cta p{color:var(--muted); margin-bottom:38px;}
+  .cta-btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#0c0c12;
+    text-decoration:none;
+    padding:14px 30px;
+    border-radius:4px;
+    font-weight:600;
+    font-size:0.96rem;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .cta-btn:hover{background:var(--accent-2); transform:translateY(-2px);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:28px 0;
+    color:var(--muted);
+    font-size:0.85rem;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  @media (max-width:760px){
+    .skill-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:repeat(2, 1fr);}
+    .hero{padding:80px 0 60px;}
+    header .wrap{flex-direction:column; gap:14px; align-items:flex-start;}
+    footer .wrap{flex-direction:column; gap:10px;}
+  }
+  @media (max-width:480px){
+    .steps{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">maharet /04</div>
+    <nav><ul>
+      <li><a href="#yetenekler">Yetenekler</a></li>
+      <li><a href="#surec">Süreç</a></li>
+      <li><a href="#iletisim">İletişim</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Bir fikri, çalışan bir şeye dönüştürmek</p>
+    <h1>Yeteneği göstermenin en iyi yolu, <em>onu kullanmaktır.</em></h1>
+    <p>Bu sayfa kendisi bir kanıt: tasarımdan koda, içerikten yapıya kadar tek bir elden, tek bir oturumda ortaya çıktı. Aşağıda neyin altını doldurduğumu bulacaksın.</p>
+    <div class="hero-stats">
+      <div><strong>6</strong><span>Çalışma alanı</span></div>
+      <div><strong>1</strong><span>Dosya, tek sayfa</span></div>
+      <div><strong>0</strong><span>Şablon bileşen</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="skills" id="yetenekler">
+  <div class="wrap">
+    <h2>Neyi iyi yapıyorum</h2>
+    <p>Genel geçer bir "her şeyi yaparım" listesi değil; gerçekten iş gören altı alan.</p>
+    <div class="skill-grid">
+      <div class="skill">
+        <div>
+          <h3>Yazılım &amp; otomasyon</h3>
+          <p>Script'ten tam uygulamaya, veri işleme hattından küçük araçlara kadar üretime hazır kod.</p>
+        </div>
+        <span class="mark">kod</span>
+      </div>
+      <div class="skill">
+        <div>
+          <h3>Arayüz &amp; görsel tasarım</h3>
+          <p>Şablon hissi vermeyen, konuya özel tipografi ve düzen kararları.</p>
+        </div>
+        <span class="mark">tasarım</span>
+      </div>
+      <div class="skill">
+        <div>
+          <h3>Araştırma &amp; sentez</h3>
+          <p>Dağınık kaynakları tarayıp, net ve doğrulanabilir bir cevaba indirgemek.</p>
+        </div>
+        <span class="mark">araştırma</span>
+      </div>
+      <div class="skill">
+        <div>
+          <h3>Metin &amp; içerik</h3>
+          <p>Markanın sesine uygun, gereksiz süsten arınmış, okunan metin.</p>
+        </div>
+        <span class="mark">içerik</span>
+      </div>
+      <div class="skill">
+        <div>
+          <h3>Veri analizi</h3>
+          <p>Ham tabloyu okunabilir bir hikâyeye, grafiğe veya rapora çevirmek.</p>
+        </div>
+        <span class="mark">analiz</span>
+      </div>
+      <div class="skill">
+        <div>
+          <h3>Belge &amp; sunum hazırlığı</h3>
+          <p>Word, Excel, PowerPoint — biçimi düşünmeden içeriğe odaklanabilmen için.</p>
+        </div>
+        <span class="mark">doküman</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="surec">
+  <div class="wrap">
+    <h2>Bu sayfa nasıl ortaya çıktı</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>Brief'i oku</h3>
+        <p>Talebi ve bağlamı netleştir, varsayımları belirle.</p>
+      </div>
+      <div class="step">
+        <h3>Yön belirle</h3>
+        <p>Renk, tipografi ve düzeni konuya göre seç — hazır kalıba gitme.</p>
+      </div>
+      <div class="step">
+        <h3>İnşa et</h3>
+        <p>Tek dosyada, taşınabilir ve bağımsız olarak kodla.</p>
+      </div>
+      <div class="step">
+        <h3>Teslim et</h3>
+        <p>Depoya gönderilmeye hazır, çalışan bir çıktı bırak.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="iletisim">
+  <div class="wrap">
+    <h2>Bir sonraki fikrin için de aynı şekilde çalışabilirim.</h2>
+    <p>Bu sayfa bir başlangıç noktası — üzerine ekleyebilir, değiştirebilir veya baştan kurabiliriz.</p>
+    <a class="cta-btn" href="#">Konuşmaya başla</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 maharet</span>
+    <span>zite4 reposu</span>
+  </div>
+</footer>
+
+</body>
+</html>
